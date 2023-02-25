@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Summarizer</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Text Summarizer</h1>
+      <form method="POST">
+        <div class="center">
+          <textarea name="text" placeholder="Enter your text here"></textarea>
+        </div>
+        <div class="center">
+          <label for="num_sentences">Number of sentences:</label>
+          <input
+            type="number"
+            name="num_sentences"
+            id="num_sentences"
+            value="5"
+            min="1"
+            max="50"
+          />
+        </div>
+        <button type="submit">Summarize</button>
+      </form>
+
+      {% if summary %}
+      <div class="summary">
+        <h2>Summary</h2>
+        <p>{{ summary }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
